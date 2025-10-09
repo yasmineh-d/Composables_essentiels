@@ -1,6 +1,5 @@
 package com.solicode.composables_essentiels.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -12,17 +11,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
+    primary = DarkBlue,    // couleur principale du bouton
     secondary = PurpleGrey80,
     tertiary = Pink80
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
+    primary = DarkBlue,    // couleur principale du bouton
     secondary = PurpleGrey40,
     tertiary = Pink40
-
-    /* Other default colors to override
+    // Tu peux décommenter et personnaliser d’autres couleurs ici si tu veux :
+    /*
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
     onPrimary = Color.White,
@@ -34,10 +33,9 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Composables_essentielsTheme(
+fun ComposablesEssentielsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = true, // disponible à partir d'Android 12 (API 31)
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -45,7 +43,6 @@ fun Composables_essentielsTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
